@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  createdGroups  Group[]         @relation("GroupCreator")
+  groupMembers   GroupMember[]
+  paidExpenses   Expense[]       @relation("ExpensePayer")
+  expenseSplits  ExpenseSplit[]
+
+  @@map("users")
+}
+
+model Group {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  currency    String   @default("INR")
+  createdBy   String   @map("created_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  creator  User          @relation("GroupCreator", fields: [createdBy], references: [id])
+  members  GroupMember[]
+  expenses Expense[]
+
+  @@map("groups")
+}
+
+model GroupMember {
+  groupId  String   @map("group_id")
+  userId   String   @map("user_id")
+  joinedAt DateTime @default(now()) @map("joined_at")
+
+  group Group @relation(fields: [groupId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@id([groupId, userId])
+  @@map("group_members")
+}
+
+model Expense {
+  id          String   @id @default(uuid())
+  groupId     String   @map("group_id")
+  description String
+  amount      Decimal  @db.Decimal(10, 2)
+  category    String   @default("other")
+  expenseDate DateTime @default(now()) @map("expense_date")
+  notes       String?
+  paidBy      String   @map("paid_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  group  Group          @relation(fields: [groupId], references: [id])
+  payer  User           @relation("ExpensePayer", fields: [paidBy], references: [id])
+  splits ExpenseSplit[]
+
+  @@map("expenses")
+}
+
+model ExpenseSplit {
+  id        String  @id @default(uuid())
+  expenseId String  @map("expense_id")
+  userId    String  @map("user_id")
+  amount    Decimal @db.Decimal(10, 2)
+  settled   Boolean @default(false)
+
+  expense Expense @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@map("expense_splits")
+}
