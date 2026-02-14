@@ -31,29 +31,20 @@ A simple expense tracker to split bills with friends.
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/expense-tracker.git
-cd expense-tracker
+git clone https://github.com/raghul1212/expense-tracker-mvp-backend.git
+cd expense-tracker-mvp-backend
 ```
 
 2. Setup Backend
 ```bash
-cd backend
+cd expense-tracker-mvp-backend
 npm install
 cp .env.example .env
 # Add your DATABASE_URL to .env
 npm run dev
 ```
 
-3. Setup Frontend
-```bash
-cd frontend
-npm install
-cp .env.example .env
-# Add VITE_API_URL to .env
-npm run dev
-```
-
-4. Visit http://localhost:5173
+3. Visit http://localhost:5173
 
 ## License
 
