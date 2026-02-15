@@ -1,12 +1,16 @@
 {
-  "name": "backend",
+  "name": "expense-tracker-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is the backend API for the Expense Tracker application. It provides endpoints for managing expenses, categories, and user authentication.",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "build": "npx prisma generate && tsc",
+    "start": "node dist/index.js",
+    "migrate:deploy": "npx prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
