@@ -12,10 +12,10 @@ A simple expense tracker to split bills with friends.
 
 ## Tech Stack
 
-**Frontend:** React + TypeScript + Tailwind CSS
-**Backend:** Node.js + Express + TypeScript
-**Database:** PostgreSQL (Supabase)
-**Deployment:** Vercel (Frontend) + Render (Backend)
+- **Frontend:** React + TypeScript + Tailwind CSS
+- **Backend:** Node.js + Express + TypeScript
+- **Database:** PostgreSQL (Supabase)
+- **Deployment:** Vercel (Frontend) + Render (Backend)
 
 ## Live Demo
 
@@ -48,5 +48,5 @@ npm run dev
 
 ## License
 
-MIT
+[MIT](https://github.com/raghul1212/expense-tracker-mvp-backend?tab=MIT-1-ov-file)
 ```
