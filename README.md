@@ -18,6 +18,7 @@ A simple expense tracker to split bills with friends.
 - **Deployment:** Vercel (Frontend) + Render (Backend)
 
 ## Live Demo
+<img width="1915" height="948" alt="image" src="https://github.com/user-attachments/assets/a2c9ce52-416d-4e52-86f3-ff4e9fe8350c" />
 
 🔗 [Expense Tracker - Split Easy](https://expense-tracker-mvp-ui.vercel.app/)
 
