@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
       description, 
       amount, 
       category,
-      expense_date,
+      expenseDate,
       notes,
       paid_by_email,
       split_with_emails // Array of emails to split with
@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
         description,
         amount: totalAmount,
         category: category || 'other',
-        expenseDate: expense_date ? new Date(expense_date) : new Date(),
+        expenseDate: expenseDate ? new Date(expenseDate) : new Date(),
         notes,
         paidBy: payer.id,
         splits: {
