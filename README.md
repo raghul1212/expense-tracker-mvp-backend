@@ -49,4 +49,3 @@ npm run dev
 ## License
 
 [MIT](https://github.com/raghul1212/expense-tracker-mvp-backend?tab=MIT-1-ov-file)
-```
